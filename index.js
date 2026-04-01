@@ -53,25 +53,25 @@ const allowedIPs = [
 
 const loggedIPs = new Set();
 
-app.use((req, res, next) => {
-    const rawIP = req.headers["x-forwarded-for"] || req.socket.remoteAddress || "";
-    const clientIP = rawIP.replace("::ffff:", "").split(",")[0].trim();
-    const now = new Date().toLocaleString("th-TH", { timeZone: "Asia/Bangkok" });
+// app.use((req, res, next) => {
+//     const rawIP = req.headers["x-forwarded-for"] || req.socket.remoteAddress || "";
+//     const clientIP = rawIP.replace("::ffff:", "").split(",")[0].trim();
+//     const now = new Date().toLocaleString("th-TH", { timeZone: "Asia/Bangkok" });
 
-    if (req.method === "OPTIONS") return next(); // ✅ ให้ OPTIONS ผ่าน
+//     if (req.method === "OPTIONS") return next(); // ✅ ให้ OPTIONS ผ่าน
 
-    if (!loggedIPs.has(clientIP)) {
-        console.log(`[${now}] 🌐 IP ที่เข้ามา:`, clientIP);
-        loggedIPs.add(clientIP);
-    }
+//     if (!loggedIPs.has(clientIP)) {
+//         console.log(`[${now}] 🌐 IP ที่เข้ามา:`, clientIP);
+//         loggedIPs.add(clientIP);
+//     }
 
-    if (allowedIPs.includes(clientIP)) {
-        return next();
-    }
+//     if (allowedIPs.includes(clientIP)) {
+//         return next();
+//     }
 
-    console.warn(`[${now}] ❌ Blocked IP:`, clientIP);
-    return res.status(403).json({ message: "Access denied" });
-});
+//     console.warn(`[${now}] ❌ Blocked IP:`, clientIP);
+//     return res.status(403).json({ message: "Access denied" });
+// });
 
 app.use(express.json({
     limit: '100mb',
@@ -85,6 +85,7 @@ app.use(express.urlencoded({
 }));
 
 app.use(cookieParser());
+
 
 //Route
 const prefix = "/api/v1";
