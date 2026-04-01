@@ -10,27 +10,39 @@ const app = express();
 const httpServer = createServer(app);
 
 const allowedOrigins = [
-    // "https://pmhthai.com",
-    // "https://www.pmhthai.com",
-    // "http://178.128.121.55",
     "http://localhost:5173",
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "https://whmanagementfrontend-production.up.railway.app"
 ];
 
-app.use(
-    cors({
-        origin: function (origin, callback) {
-            if (!origin || allowedOrigins.includes(origin)) {
-                callback(null, true);
-            } else {
-                callback(new Error("Not allowed by CORS"));
-            }
-        },
-        credentials: true,
-        methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-    })
-);
+// app.use(
+//     cors({
+//         origin: function (origin, callback) {
+//             if (!origin || allowedOrigins.includes(origin)) {
+//                 callback(null, true);
+//             } else {
+//                 callback(new Error("Not allowed by CORS"));
+//             }
+//         },
+//         credentials: true,
+//         methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+//         allowedHeaders: ["Content-Type", "Authorization"],
+//     })
+// );
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(null, false); // 🔥 ห้าม throw error
+        }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}));
+
 
 const allowedIPs = [
     //   "178.128.121.55",  // frontend

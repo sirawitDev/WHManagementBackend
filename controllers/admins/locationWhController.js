@@ -1,6 +1,5 @@
 const LocationsWh = require('../../models/admins/locationsWh/locationWhModal');
 
-// ✅ GET ALL
 exports.getLocationWh = async (req, res) => {
     try {
         const locationwh = await LocationsWh.find();
@@ -10,7 +9,6 @@ exports.getLocationWh = async (req, res) => {
     }
 };
 
-// ✅ GET BY ID
 exports.getLocationWhById = async (req, res) => {
     try {
         const locationwh = await LocationsWh.findById(req.params.id);
@@ -23,7 +21,6 @@ exports.getLocationWhById = async (req, res) => {
     }
 };
 
-// ✅ CREATE (POST)
 exports.createLocationWh = async (req, res) => {
     try {
         // หา code ล่าสุด
@@ -54,7 +51,6 @@ exports.createLocationWh = async (req, res) => {
     }
 };
 
-// ✅ UPDATE (PUT)
 exports.updateLocationWh = async (req, res) => {
     try {
         const updated = await LocationsWh.findByIdAndUpdate(
@@ -73,7 +69,6 @@ exports.updateLocationWh = async (req, res) => {
     }
 };
 
-// ✅ DELETE
 exports.deleteLocationWh = async (req, res) => {
     try {
         const deleted = await LocationsWh.findByIdAndDelete(req.params.id);
