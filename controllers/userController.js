@@ -91,6 +91,7 @@ exports.createUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
     try {
         const { username, password } = req.body;
+        console.log(req.body)
 
         const user = await Users.findOne({ username });
         if (!user) {
@@ -107,6 +108,8 @@ exports.loginUser = async (req, res) => {
             username: user.username,
             memberId: user.memberId
         };
+
+        console.log(payload)
         const token = jwt.sign(payload, process.env.JWT_SECRET || 'structureSecret', { expiresIn: '5h' });
 
         const { password: _, ...userWithoutPassword } = user.toObject();

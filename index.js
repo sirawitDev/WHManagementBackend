@@ -78,6 +78,12 @@ app.use(cookieParser());
 const prefix = "/api/v1";
 
 app.use(prefix + "/users", require("./routes/userRoute"));
+app.use(prefix + "/businesspartner", require("./routes/admins/BusinessPartnerRoute"));
+app.use(prefix + "/units", require("./routes/admins/unitRoute"));
+app.use(prefix + "/categories", require("./routes/admins/categoryRoute"));
+app.use(prefix + "/materials", require("./routes/admins/materialRoute"));
+app.use(prefix + "/vendors", require("./routes/admins/venderRoute"));
+app.use(prefix + "/location-wh", require("./routes/admins/locationWhRoute"));
 
 const PORT = process.env.PORT || 8888;
 httpServer.listen(PORT, () => {
