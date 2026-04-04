@@ -23,7 +23,6 @@ exports.getLocationWhById = async (req, res) => {
 
 exports.createLocationWh = async (req, res) => {
     try {
-        // หา code ล่าสุด
         const lastLocationWh = await LocationsWh.findOne().sort({ code: -1 }).collation({ locale: "en_US", numericOrdering: true });
         let nextCode = 'LWH00001';
         if (lastLocationWh && lastLocationWh.code) {

@@ -97,6 +97,9 @@ app.use(prefix + "/categories", require("./routes/admins/categoryRoute"));
 app.use(prefix + "/materials", require("./routes/admins/materialRoute"));
 app.use(prefix + "/vendors", require("./routes/admins/venderRoute"));
 app.use(prefix + "/location-wh", require("./routes/admins/locationWhRoute"));
+app.use(prefix + "/reports/goodissue", require("./routes/admins/reports/goodissueRoute"));
+app.use(prefix + "/reports/stock-reports", require("./routes/admins/reports/stockreportsRoute"));
+
 
 const PORT = process.env.PORT || 8888;
 httpServer.listen(PORT, () => {

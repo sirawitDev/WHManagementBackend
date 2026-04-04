@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const materialSchema = new mongoose.Schema({
-    code: { type: String, required: true, unique: true },
+    code: { type: String},
     categoryId: { type: String, required: false },
     unitId: { type: String, required: false },
     productName: { type: String, required: false },
@@ -10,7 +10,7 @@ const materialSchema = new mongoose.Schema({
     // packageId: { type: String, required: false },
     // lotNo: { type: String, required: false },
     receivedAt: { type: Date, required: false },
-    quantity: { type: String, required: false },
+    quantity: { type: Number, required: false },
     warehouseLocation: { type: String, required: false },
     createdBy: { type: String, required: false },
 
