@@ -100,6 +100,7 @@ app.use(prefix + "/location-wh", require("./routes/admins/locationWhRoute"));
 app.use(prefix + "/reports/goodissue", require("./routes/admins/reports/goodissueRoute"));
 app.use(prefix + "/reports/stock-reports", require("./routes/admins/reports/stockreportsRoute"));
 
+app.use(prefix + "/checker/reports/goodissue", require("./routes/checker/reports/checkerGoodIssueRoute"));
 
 const PORT = process.env.PORT || 8888;
 httpServer.listen(PORT, () => {
