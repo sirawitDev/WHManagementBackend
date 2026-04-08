@@ -57,7 +57,7 @@ exports.getUserByMemberId = async (req, res) => {
 
 exports.createUser = async (req, res) => {
     try {
-        const { username, password, phone, email, firstname, lastname } = req.body;
+        const { username, password, phone, email, firstname, lastname , role } = req.body;
 
         console.log("Creating user with data:", {
             username, phone, email, firstname, lastname
@@ -78,7 +78,9 @@ exports.createUser = async (req, res) => {
             phone,
             email,
             firstname,
-            lastname
+            lastname,
+            role,
+            position: role,
         });
 
         const savedUser = await newUser.save();
